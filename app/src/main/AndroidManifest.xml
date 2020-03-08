@@ -17,6 +17,18 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <receiver android:name="com.e.remoteviews.appwidget.PlayerAppWidgetProvider">
+            <meta-data android:name="android.appwidget.provider"
+                       android:resource="@xml/appwidget_player_info"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="com.e.appwiget.player.PLAY"/>
+                <action android:name="com.e.appwiget.player.PAUSE"/>
+                <action android:name="com.e.appwiget.player.PRE"/>
+                <action android:name="com.e.appwiget.player.NEXT"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="com.e.remoteviews.service.PlayerService"/>
     </application>
 
 </manifest>

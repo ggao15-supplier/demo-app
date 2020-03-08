@@ -14,12 +14,4 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_margin="10dp"/>
 
-    <ImageView
-            android:id="@+id/ivHeadRight"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_margin="10dp"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

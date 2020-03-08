@@ -23,15 +23,15 @@ class MainActivity : AppCompatActivity() {
                 )
             )
         )
-        val xfModelRoundImageLoad = XFModelRoundImageLoad()
-
-        ivHeadRight.setImageBitmap(
-            xfModelRoundImageLoad.handleImage(
-                BitmapFactory.decodeResource(
-                    resources,
-                    R.drawable.ic_launcher
-                )
-            )
-        )
+//        val xfModelRoundImageLoad = XFModelRoundImageLoad()
+//
+//        ivHeadRight.setImageBitmap(
+//            xfModelRoundImageLoad.handleImage(
+//                BitmapFactory.decodeResource(
+//                    resources,
+//                    R.drawable.ic_launcher
+//                )
+//            )
+//        )
     }
 }
