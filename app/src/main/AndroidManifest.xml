@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.e.myapplication">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -22,10 +22,10 @@
                        android:resource="@xml/appwidget_player_info"/>
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-                <action android:name="com.e.appwiget.player.PLAY"/>
-                <action android:name="com.e.appwiget.player.PAUSE"/>
-                <action android:name="com.e.appwiget.player.PRE"/>
-                <action android:name="com.e.appwiget.player.NEXT"/>
+                <action android:name="com.e.appwiget.player.play"/>
+                <action android:name="com.e.appwiget.player.pause"/>
+                <action android:name="com.e.appwiget.player.pre"/>
+                <action android:name="com.e.appwiget.player.next"/>
             </intent-filter>
         </receiver>
         <service android:name="com.e.remoteviews.service.PlayerService"/>
