@@ -54,7 +54,7 @@ class PlayerAppWidgetProvider : AppWidgetProvider() {
                     intent?.getStringExtra(EXTRA_SINGER) ?: "",
                     isPlay
                 )
-                appWidgetManager.updateAppWidget(ComponentName(cxt, AppWidgetProvider::class.java), remoteViews)
+                appWidgetManager.updateAppWidget(ComponentName(cxt, PlayerAppWidgetProvider::class.java), remoteViews)
             }
         }
 

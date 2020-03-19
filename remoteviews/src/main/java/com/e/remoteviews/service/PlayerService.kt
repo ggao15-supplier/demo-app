@@ -1,11 +1,13 @@
 package com.e.remoteviews.service
 
 import android.app.Service
+import android.content.ComponentName
 import android.content.Intent
 import android.os.Binder
 import android.os.IBinder
 import android.util.Log
 import com.e.remoteviews.appwidget.PlayerAppWidgetProvider
+import com.e.remoteviews.notification.PlayerNotification
 
 class PlayerService : Service() {
     private var isPlay = false
@@ -20,6 +22,7 @@ class PlayerService : Service() {
             var songName = ""
             var singer = ""
             var playAction = it.getStringExtra(PlayerAppWidgetProvider.EXTRA_CLICK_ACTION)
+            val playerNotification = PlayerNotification(this)
 
             when (playAction) {
                 PlayerAppWidgetProvider.CLICK_PRE -> {
@@ -41,9 +44,17 @@ class PlayerService : Service() {
                     singer = "Alex"
                 }
             }
-
+            startForeground(
+                PlayerNotification.notificationId,
+                playerNotification.createNotification(photoPath, songName, singer, isPlay)
+            )
             sendBroadcast(
-                Intent(playAction)
+                Intent(playAction).setComponent(
+                    ComponentName(
+                        this,
+                        PlayerAppWidgetProvider::class.java
+                    )
+                )
                     .putExtra(PlayerAppWidgetProvider.EXTRA_SONG, songName)
                     .putExtra(PlayerAppWidgetProvider.EXTRA_PHOTO, photoPath)
                     .putExtra(PlayerAppWidgetProvider.EXTRA_SINGER, singer)
@@ -51,6 +62,6 @@ class PlayerService : Service() {
             )
 
         }
-        return super.onStartCommand(intent, flags, startId)
+        return START_STICKY
     }
 }

@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.e.remoteviews.service.PlayerService
 import com.e.roundhead.RoundImageLoad
 import com.e.roundhead.shaper.ShaderRoundImageLoad
-import com.e.roundhead.xfmodel.XFModelRoundImageLoad
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +16,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         startService(Intent(this, PlayerService::class.java))
         val shaderRoundImageLoad: RoundImageLoad = ShaderRoundImageLoad()
-
         ivHeadLeft.setImageBitmap(
             shaderRoundImageLoad.handleImage(
                 BitmapFactory.decodeResource(
