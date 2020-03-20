@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="text_user_name">用户名</string>
+    <string name="text_user_phone">手机号</string>
+    <string name="text_user_pwd">密码</string>
+    <string name="text_enter">进入音乐的海洋</string>
 </resources>
