@@ -1,4 +1,4 @@
-package com.e.myapplication
+package com.e.myapplication.login
 
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -6,6 +6,8 @@ import android.graphics.drawable.TransitionDrawable
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import com.e.myapplication.home.MainActivity
+import com.e.myapplication.R
 import com.e.remoteviews.service.PlayerService
 import com.e.roundhead.RoundImageLoad
 import com.e.roundhead.shaper.ShaderRoundImageLoad
@@ -31,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
             val translationDrawable: TransitionDrawable = btnEnter.background as TransitionDrawable
             translationDrawable.startTransition(300)
             handler.postDelayed({
-                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                MainActivity.enter(this@LoginActivity)
             }, 500)
         }
 //        val xfModelRoundImageLoad = XFModelRoundImageLoad()
