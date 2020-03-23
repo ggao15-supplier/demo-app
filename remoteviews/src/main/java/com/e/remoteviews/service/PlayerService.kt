@@ -44,6 +44,7 @@ class PlayerService : Service() {
                     singer = "Alex"
                 }
             }
+            //使用前台notification 用于保活
             startForeground(
                 PlayerNotification.notificationId,
                 playerNotification.createNotification(photoPath, songName, singer, isPlay)

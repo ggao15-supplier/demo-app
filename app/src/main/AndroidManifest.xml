@@ -13,9 +13,9 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".home.MainActivity"></activity>
         <activity
-                android:name=".LoginActivity"
+                android:name=".login.LoginActivity"
                 android:windowSoftInputMode="adjustUnspecified">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,9 +38,11 @@
             </intent-filter>
         </receiver>
 
+        <!--设置service为后台播放音乐的 前台service，用于进程保活-->
         <service
                 android:name="com.e.remoteviews.service.PlayerService"
                 android:foregroundServiceType="mediaPlayback">
+            <!--设置service的权限，用于保活-->
             <intent-filter android:priority="1000">
                 <action android:name="com.ge.playservice" />
             </intent-filter>
