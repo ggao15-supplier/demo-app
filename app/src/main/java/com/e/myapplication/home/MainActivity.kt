@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.e.animations.AnimationController
 import com.e.myapplication.R
 import com.e.roundhead.customdrawable.RoundDrawable
+import com.fprdmps.mobileappcn.windowmanagers.FloatButtonWindowManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         rvMusics.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         rvMusics.adapter = adapter
         setData()
+        FloatButtonWindowManager(windowManager, this)
     }
 
     private fun setData() {
