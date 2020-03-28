@@ -13,7 +13,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".home.MainActivity"></activity>
+<!--        app中的activity可以在手机的两个task中显示-->
+        <activity
+                android:name=".home.MainActivity"
+                android:launchMode="singleTask"
+                android:taskAffinity="com.e.myapplication.main"/>
         <activity
                 android:name=".login.LoginActivity"
                 android:windowSoftInputMode="adjustUnspecified">
