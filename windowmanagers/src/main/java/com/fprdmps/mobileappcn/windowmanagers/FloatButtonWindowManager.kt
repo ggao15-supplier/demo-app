@@ -21,6 +21,7 @@ class FloatButtonWindowManager(
         PixelFormat.RGBA_8888
     )
     private val button = FloatButton(context)
+    var onFloatClickListener: OnFloatClickListener? = null
 
     init {
         addView()
@@ -45,9 +46,16 @@ class FloatButtonWindowManager(
             }
 
         }
+        button.setOnClickListener {
+            onFloatClickListener?.onFloatClick()
+        }
     }
 
     interface OnUpdateLayoutListener {
         fun onUpdateLayout(x: Int, y: Int)
+    }
+
+    interface OnFloatClickListener {
+        fun onFloatClick()
     }
 }

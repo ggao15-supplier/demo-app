@@ -1,13 +1,16 @@
-package com.e.myapplication.home
+package com.e.myapplication.views.home
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.e.animations.AnimationController
 import com.e.myapplication.R
+import com.e.myapplication.views.region.WorldMapActivity
 import com.e.roundhead.customdrawable.RoundDrawable
 import com.fprdmps.mobileappcn.windowmanagers.FloatButtonWindowManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -37,7 +40,13 @@ class MainActivity : AppCompatActivity() {
         rvMusics.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         rvMusics.adapter = adapter
         setData()
-        FloatButtonWindowManager(windowManager, this)
+        FloatButtonWindowManager(windowManager, this).onFloatClickListener =
+            object : FloatButtonWindowManager.OnFloatClickListener {
+                override fun onFloatClick() {
+                    startActivity(Intent(this@MainActivity, WorldMapActivity::class.java))
+                }
+
+            }
     }
 
     private fun setData() {
@@ -53,6 +62,23 @@ class MainActivity : AppCompatActivity() {
                 MusicItem("God is girl", "Crystal", "")
             )
         )
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase)
+        //该方法再Activity中的attach方法中执行，执行之后　初始化　phonewindow
+    }
+
+    override fun onContentChanged() {
+        super.onContentChanged()
+        //activity的视图添加到decodeview中的完成时调用这个方法
+
+    }
+
+    override fun setVisible(visible: Boolean) {
+        super.setVisible(visible)
+        //在这个方法中decodeview　设置为可见
+        Toast.makeText(this, "11", Toast.LENGTH_LONG).show()
     }
 
     override fun finish() {

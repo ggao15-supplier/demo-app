@@ -13,9 +13,9 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".home.MainActivity"></activity>
+        <activity android:name="com.e.myapplication.views.home.MainActivity"></activity>
         <activity
-                android:name=".login.LoginActivity"
+                android:name="com.e.myapplication.views.login.LoginActivity"
                 android:windowSoftInputMode="adjustUnspecified">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+                android:name="com.e.myapplication.views.region.WorldMapActivity"
+                android:screenOrientation="portrait" />
 
         <receiver android:name="com.e.remoteviews.appwidget.PlayerAppWidgetProvider">
             <meta-data

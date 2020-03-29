@@ -1,4 +1,4 @@
-package com.e.myapplication.home
+package com.e.myapplication.views.home
 
 import android.net.Uri
 import android.text.TextUtils
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.e.myapplication.R
 import kotlinx.android.synthetic.main.item_music.view.*
-import java.net.URI
 
 class MusicAdapter : RecyclerView.Adapter<MusicAdapter.MusicHolder>() {
     private val musics = mutableListOf<MusicItem>()

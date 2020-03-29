@@ -1,4 +1,4 @@
-package com.e.myapplication.login
+package com.e.myapplication.views.login
 
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -6,7 +6,7 @@ import android.graphics.drawable.TransitionDrawable
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import com.e.myapplication.home.MainActivity
+import com.e.myapplication.views.home.MainActivity
 import com.e.myapplication.R
 import com.e.remoteviews.service.PlayerService
 import com.e.roundhead.RoundImageLoad
