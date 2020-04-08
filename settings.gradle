@@ -1,1 +1,1 @@
-include ':app', ':roundhead', ':remoteviews', ':animations', ':windowmanagers'
+include ':app', ':roundhead', ':remoteviews', ':animations', ':windowmanagers', ':morewindow'
