@@ -1,30 +1,23 @@
 package com.e.myapplication.views.region
 
-import android.graphics.BitmapFactory
-import android.graphics.BitmapRegionDecoder
-import android.graphics.Rect
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import com.e.myapplication.R
 import kotlinx.android.synthetic.main.activity_map.*
-import java.io.InputStream
 
 class WorldMapActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
-        val inputStream: InputStream = assets.open("ic_world_map.jpg")
-        val bitmapRegionDecoder = BitmapRegionDecoder.newInstance(inputStream, true)
-        ivMap.setImageBitmap(
-            bitmapRegionDecoder.decodeRegion(
-                Rect(
-                    0,
-                    0,
-                    ivMap.width,
-                    ivMap.height
-                ), BitmapFactory.Options()
-            )
-        )
+    }
+    //view 完全加载到activity中会调用
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        Log.d("xxx","onWindowFocusChanged:$hasFocus")
+        if (hasFocus) {
+            ivMap.fromAssets("ic_world_map.jpg")
+        }
     }
 }

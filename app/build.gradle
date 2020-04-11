@@ -41,5 +41,6 @@ dependencies {
     implementation project(':remoteviews')
     implementation project(':animations')
     implementation project(':windowmanagers')
+    implementation project(':regionview')
     implementation 'com.squareup.retrofit2:retrofit:2.8.1'
 }
