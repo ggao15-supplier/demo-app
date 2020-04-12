@@ -1,6 +1,5 @@
 package com.example.regionview
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
@@ -9,8 +8,6 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.ScaleGestureDetector
 import android.view.View
-import android.widget.ImageView
-import androidx.core.graphics.scale
 import kotlin.math.abs
 
 class RegionImageView(context: Context, attrs: AttributeSet?, defaultStyle: Int) :
@@ -147,9 +144,10 @@ class RegionImageView(context: Context, attrs: AttributeSet?, defaultStyle: Int)
         }
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        return gestureDetector.onTouchEvent(event) || scaleGestureDetector.onTouchEvent(event)
+        return scaleGestureDetector.onTouchEvent(event) or
+                gestureDetector.onTouchEvent(event) or
+                super.onTouchEvent(event)
     }
 
     private fun move(dx: Int, dy: Int) {
