@@ -1,4 +1,4 @@
-package com.fprdmps.mobileappcn.morewindow
+package com.example.morewindow
 
 import org.junit.Test
 

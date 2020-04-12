@@ -13,11 +13,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-<!--        app中的activity可以在手机的两个task中显示-->
+        <!--        app中的activity可以在手机的两个task中显示-->
         <activity
                 android:name=".views.home.MainActivity"
                 android:launchMode="singleTask"
-                android:taskAffinity="com.e.myapplication.main"/>
+                android:taskAffinity="com.e.myapplication.main" />
         <activity
                 android:name="com.e.myapplication.views.login.LoginActivity"
                 android:windowSoftInputMode="adjustUnspecified">
@@ -29,6 +29,9 @@
         </activity>
         <activity
                 android:name="com.e.myapplication.views.region.WorldMapActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name="com.example.morewindow.MoreWindowActivity"
                 android:screenOrientation="portrait" />
 
         <receiver android:name="com.e.remoteviews.appwidget.PlayerAppWidgetProvider">

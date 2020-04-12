@@ -1,7 +1,7 @@
 include ':app',
+        ':morewindow',
         ':roundhead',
         ':remoteviews',
         ':animations',
         ':windowmanagers',
-        ':regionview',
-        ':morewindow'
+        ':regionview'

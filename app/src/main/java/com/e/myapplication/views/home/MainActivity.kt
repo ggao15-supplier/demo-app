@@ -12,6 +12,7 @@ import com.e.animations.AnimationController
 import com.e.myapplication.R
 import com.e.myapplication.views.region.WorldMapActivity
 import com.e.roundhead.customdrawable.RoundDrawable
+import com.example.morewindow.MoreWindowActivity
 import com.fprdmps.mobileappcn.windowmanagers.FloatButtonWindowManager
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -47,6 +48,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
+        ivHead.setOnClickListener { startActivity(Intent(this, MoreWindowActivity::class.java)) }
     }
 
     private fun setData() {
