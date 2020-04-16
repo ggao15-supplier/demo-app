@@ -5,3 +5,4 @@ include ':app',
         ':animations',
         ':windowmanagers',
         ':regionview'
+include ':leetcode'
