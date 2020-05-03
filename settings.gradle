@@ -6,3 +6,5 @@ include ':app',
         ':windowmanagers',
         ':regionview'
 include ':leetcode'
+include ':memoryobserver'
+include ':cliprect'
