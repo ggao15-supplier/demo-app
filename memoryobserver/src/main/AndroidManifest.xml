@@ -1,2 +1,3 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.ggg.memoryobserver" />
+        package="com.ggg.memoryobserver"
+        android:sharedUserId="android.ui.shell"/>

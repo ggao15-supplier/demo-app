@@ -20,6 +20,7 @@
             <option value="$PROJECT_DIR$/remoteviews" />
             <option value="$PROJECT_DIR$/roundhead" />
             <option value="$PROJECT_DIR$/windowmanagers" />
+            <option value="$PROJECT_DIR$/withoutoverdraw" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
