@@ -1,6 +1,5 @@
 package com.ggg.leetcode;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ReplaceSpaceToChar {
