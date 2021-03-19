@@ -1,3 +1,4 @@
+include ':desinpattern'
 include ':surfaceview'
 include ':app'
 include ':morewindow'

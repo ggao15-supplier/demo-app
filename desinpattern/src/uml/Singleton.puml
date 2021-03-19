@@ -1,0 +1,22 @@
+@startuml
+'单例模式
+class SingleClass {
+- {static}instance:SingleClass
+- SingleClass ()
++ {static}getInstance()
+
+}
+
+class Client {
+
+}
+SingleClass <..Client
+
+note right of SingleClass
+ 单例模式 可以分为懒汉模式和饿汉模式,
+懒汉:在getInstance中if(instance==null) instance=new SingleClass() ,
+在 getInstance 方法上可以加锁保证线程安全,但多线程效率低;
+饿汉:在声明变量时:instance:SingleClass=new SingleClass(),
+因为只有一个instance ,是线程安全的
+end note
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+'简单工厂模式
+
+interface Product {
++ getPrice():double
++ getName():String
+}
+enum ProductType
+
+class ProductFactory {
+  + createProduct(type:ProductType):Product
+}
+
+class ProductA {
+}
+class ProductB {
+}
+
+class Client {}
+
+Product <|..ProductA
+Product <|..ProductB
+Product <..ProductFactory
+ProductType<.ProductFactory
+ProductFactory<..Client
+Product<..Client
+ProductType<..Client
+@enduml

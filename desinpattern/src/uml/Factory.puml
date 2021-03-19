@@ -1,0 +1,22 @@
+@startuml
+'工厂模式
+interface Product
+abstract class AbstractFactory {
++ createProduct():Product
+}
+class FactoryOne {}
+class FactoryTwo {}
+class ProductOne {}
+class ProductTwo {}
+class Client {}
+
+AbstractFactory<|-- FactoryOne
+AbstractFactory<|-- FactoryTwo
+Product<|.. ProductOne
+Product<|.. ProductTwo
+Product <..AbstractFactory
+Product<.Client
+AbstractFactory <.Client
+ProductOne<..FactoryOne
+ProductTwo<..FactoryTwo
+@enduml
