@@ -1,0 +1,25 @@
+@startuml
+
+class Product{
+- attributeA:String
+- attributeB:String
+- attributeC:String
+ setA():void
+ setB():void
+ setC():void
+}
+class Builder{
+- product:Product
++ setA():Builder
++ setB():Builder
++ setC():Builder
++ build():Product
+}
+class Client{
+
+}
+
+Builder<-Product
+Client<..Product
+Client<..Builder
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+interface Product1
+interface Product2
+
+class Product11
+class Product12
+class Product21
+class Product22
+abstract class Factory{
+ + createProduct1():Product1
+ + createProduct2():Product2
+}
+
+class Factory1{
+ + createProduct1():Product11
+ + createProduct2():Product21
+ }
+class Factory2{
+ + createProduct1():Product12
+ + createProduct2():Product22
+}
+class Client{}
+
+Product1<|..Product11
+Product1<|..Product12
+Product2<|..Product21
+Product2<|..Product22
+
+Factory<|--Factory1
+Factory<|--Factory2
+
+Factory1<..Product11
+Factory1<..Product21
+Factory2<..Product12
+Factory2<..Product22
+
+Factory<..Product1
+Factory<..Product2
+
+Product1<...Client
+Product2<...Client
+Factory<...Client
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+
+interface Subject{
++ request():void
+}
+
+class RealSubject{
++ request():void
+}
+
+class Proxy{
+- subject:RealSubject
+- preRequest():void
++ request():void
+- afterRequest():void
+}
+class Client{
+}
+Subject <|... Proxy
+Subject <|... RealSubject
+RealSubject <- Proxy
+Proxy <..Client
+
+note right of Proxy
+创建 RealSubject的对象.
+在 override 的request() 方法中:
+preRequest();
+subject.request();
+afterRequest();
+end note
+
+note right of Client
+创建 Proxy 对象,调用 request方法
+
+end note
+@enduml
