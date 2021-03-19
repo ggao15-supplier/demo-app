@@ -1,3 +1,4 @@
+include ':surfaceview'
 include ':app'
 include ':morewindow'
 include ':roundhead'
