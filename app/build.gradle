@@ -48,5 +48,6 @@ dependencies {
     implementation project(':windowmanagers')
     implementation project(':regionview')
     implementation project(':morewindow')
+    implementation project(':surfaceview')
     implementation 'com.squareup.retrofit2:retrofit:2.8.1'
 }

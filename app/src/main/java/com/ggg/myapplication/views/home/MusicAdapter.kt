@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.e.myapplication.R
+import com.ggg.myapplication.selfopen.SelfModule
 import kotlinx.android.synthetic.main.item_music.view.*
 
 class MusicAdapter : RecyclerView.Adapter<MusicAdapter.MusicHolder>() {
@@ -32,6 +33,10 @@ class MusicAdapter : RecyclerView.Adapter<MusicAdapter.MusicHolder>() {
             view.tvSongName.text = item.songName
             if (!TextUtils.isEmpty(item.alumPhoto)) {
                 view.ivPhoto.setImageURI(Uri.parse(item.alumPhoto))
+            }
+
+            view.setOnClickListener {
+                item.module?.openSelfModule(it.context)
             }
         }
     }

@@ -13,6 +13,7 @@ import com.e.myapplication.R
 import com.ggg.myapplication.views.region.WorldMapActivity
 import com.ggg.roundhead.customdrawable.RoundDrawable
 import com.ggg.morewindow.MoreWindowActivity
+import com.ggg.myapplication.selfopen.SelfModule
 import com.ggg.windowmanagers.FloatButtonWindowManager
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -54,14 +55,18 @@ class MainActivity : AppCompatActivity() {
     private fun setData() {
         adapter.setData(
             listOf(
-                MusicItem("God is girl", "Crystal", ""),
-                MusicItem("God is girl", "Crystal", ""),
-                MusicItem("God is girl", "Crystal", ""),
-                MusicItem("God is girl", "Crystal", ""),
-                MusicItem("God is girl", "Crystal", ""),
-                MusicItem("God is girl", "Crystal", ""),
-                MusicItem("God is girl", "Crystal", ""),
-                MusicItem("God is girl", "Crystal", "")
+                MusicItem(
+                    "God is girl",
+                    SelfModule.SurfaceView.value,
+                    module = SelfModule.SurfaceView
+                ),
+                MusicItem("God is girl", "Crystal"),
+                MusicItem("God is girl", "Crystal"),
+                MusicItem("God is girl", "Crystal"),
+                MusicItem("God is girl", "Crystal"),
+                MusicItem("God is girl", "Crystal"),
+                MusicItem("God is girl", "Crystal"),
+                MusicItem("God is girl", "Crystal")
             )
         )
     }
