@@ -4,6 +4,7 @@
     <bytecodeTargetLevel target="1.7">
       <module name="demo-app.animations" target="1.8" />
       <module name="demo-app.app" target="1.8" />
+      <module name="demo-app.buildSrc" target="1.8" />
       <module name="demo-app.cliprect" target="1.8" />
       <module name="demo-app.memoryobserver" target="1.8" />
       <module name="demo-app.morewindow" target="1.8" />
