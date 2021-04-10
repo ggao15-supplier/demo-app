@@ -10,12 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ggg.animations.AnimationController
 import com.e.myapplication.R
+import com.e.myapplication.databinding.ActivityMainBinding
 import com.ggg.myapplication.views.region.WorldMapActivity
 import com.ggg.roundhead.customdrawable.RoundDrawable
 import com.ggg.morewindow.MoreWindowActivity
 import com.ggg.myapplication.selfopen.SelfModule
 import com.ggg.windowmanagers.FloatButtonWindowManager
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -25,12 +25,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private lateinit var binding: ActivityMainBinding
     private val adapter: MusicAdapter = MusicAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolBar)
-        ivHead.setImageDrawable(
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setSupportActionBar(binding.toolBar)
+        binding.ivHead.setImageDrawable(
             RoundDrawable(
                 BitmapFactory.decodeResource(
                     resources,
@@ -38,9 +40,9 @@ class MainActivity : AppCompatActivity() {
                 )
             )
         )
-        AnimationController.setListAnimation(rvMusics)
-        rvMusics.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        rvMusics.adapter = adapter
+        AnimationController.setListAnimation(binding.rvMusics)
+        binding.rvMusics.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        binding.rvMusics.adapter = adapter
         setData()
         FloatButtonWindowManager(windowManager, this).onFloatClickListener =
             object : FloatButtonWindowManager.OnFloatClickListener {
@@ -49,7 +51,14 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
-        ivHead.setOnClickListener { startActivity(Intent(this, MoreWindowActivity::class.java)) }
+        binding.ivHead.setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    MoreWindowActivity::class.java
+                )
+            )
+        }
     }
 
     private fun setData() {

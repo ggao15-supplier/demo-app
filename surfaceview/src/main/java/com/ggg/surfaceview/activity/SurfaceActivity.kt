@@ -1,7 +1,6 @@
 package com.ggg.surfaceview.activity
 
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.os.Bundle
@@ -9,7 +8,7 @@ import android.view.SurfaceHolder
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.ggg.surfaceview.R
-import kotlinx.android.synthetic.main.activity_surface.*
+import com.ggg.surfaceview.databinding.ActivitySurfaceBinding
 
 
 /**
@@ -17,9 +16,11 @@ import kotlinx.android.synthetic.main.activity_surface.*
  */
 class SurfaceActivity : AppCompatActivity() {
     private var callback: SurfaceHolder.Callback? = null
+    private lateinit var binding: ActivitySurfaceBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_surface)
+        binding = ActivitySurfaceBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         callback = object :
             SurfaceHolder.Callback {
             override fun surfaceCreated(holder: SurfaceHolder) {
@@ -53,13 +54,13 @@ class SurfaceActivity : AppCompatActivity() {
             }
 
         }
-        imageSurface.holder.addCallback(callback)
+        binding.imageSurface.holder.addCallback(callback)
 
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        callback?.apply { imageSurface.holder.removeCallback(this) }
+        callback?.apply { binding.imageSurface.holder?.removeCallback(this) }
 
     }
 

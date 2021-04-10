@@ -8,20 +8,22 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.ggg.myapplication.views.home.MainActivity
 import com.e.myapplication.R
+import com.e.myapplication.databinding.ActivityLoginBinding
 import com.ggg.remoteviews.service.PlayerService
 import com.ggg.roundhead.RoundImageLoad
 import com.ggg.roundhead.shaper.ShaderRoundImageLoad
-import kotlinx.android.synthetic.main.activity_login.*
+import com.ggg.roundhead.xfmodel.XFModelRoundImageLoad
 
 class LoginActivity : AppCompatActivity() {
     private val handler: Handler = Handler()
-
+    private lateinit var binding:ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+       binding= ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         startService(Intent(this, PlayerService::class.java))
         val shaderRoundImageLoad: RoundImageLoad = ShaderRoundImageLoad()
-        ivHeadLeft.setImageBitmap(
+        binding.ivHeadLeft.setImageBitmap(
             shaderRoundImageLoad.handleImage(
                 BitmapFactory.decodeResource(
                     resources,
@@ -29,22 +31,22 @@ class LoginActivity : AppCompatActivity() {
                 )
             )
         )
-        btnEnter.setOnClickListener {
-            val translationDrawable: TransitionDrawable = btnEnter.background as TransitionDrawable
+        binding.btnEnter.setOnClickListener {
+            val translationDrawable: TransitionDrawable = binding.btnEnter.background as TransitionDrawable
             translationDrawable.startTransition(300)
             handler.postDelayed({
                 MainActivity.enter(this@LoginActivity)
             }, 500)
         }
-//        val xfModelRoundImageLoad = XFModelRoundImageLoad()
-//
-//        ivHeadRight.setImageBitmap(
-//            xfModelRoundImageLoad.handleImage(
-//                BitmapFactory.decodeResource(
-//                    resources,
-//                    R.drawable.ic_launcher
-//                )
-//            )
-//        )
+        val xfModelRoundImageLoad = XFModelRoundImageLoad()
+
+        binding.ivHeadRight.setImageBitmap(
+            xfModelRoundImageLoad.handleImage(
+                BitmapFactory.decodeResource(
+                    resources,
+                    R.drawable.ic_launcher
+                )
+            )
+        )
     }
 }

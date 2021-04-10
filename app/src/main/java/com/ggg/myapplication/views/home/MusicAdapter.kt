@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.e.myapplication.R
-import com.ggg.myapplication.selfopen.SelfModule
-import kotlinx.android.synthetic.main.item_music.view.*
+import com.e.myapplication.databinding.ItemMusicBinding
 
 class MusicAdapter : RecyclerView.Adapter<MusicAdapter.MusicHolder>() {
     private val musics = mutableListOf<MusicItem>()
@@ -18,8 +17,10 @@ class MusicAdapter : RecyclerView.Adapter<MusicAdapter.MusicHolder>() {
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicHolder =
-        MusicHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_music, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicHolder {
+        val binding = ItemMusicBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MusicHolder(binding)
+    }
 
     override fun getItemCount(): Int = musics.size
 
@@ -27,15 +28,17 @@ class MusicAdapter : RecyclerView.Adapter<MusicAdapter.MusicHolder>() {
         holder.bind(musics[position])
     }
 
-    class MusicHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    class MusicHolder(private val itemMusicBinding: ItemMusicBinding) :
+        RecyclerView.ViewHolder(itemMusicBinding.root) {
         fun bind(item: MusicItem) {
-            view.tvSinger.text = item.singer
-            view.tvSongName.text = item.songName
+
+            itemMusicBinding.tvSinger.text = item.singer
+            itemMusicBinding.tvSongName.text = item.songName
             if (!TextUtils.isEmpty(item.alumPhoto)) {
-                view.ivPhoto.setImageURI(Uri.parse(item.alumPhoto))
+                itemMusicBinding.ivPhoto.setImageURI(Uri.parse(item.alumPhoto))
             }
 
-            view.setOnClickListener {
+            itemMusicBinding.root.setOnClickListener {
                 item.module?.openSelfModule(it.context)
             }
         }

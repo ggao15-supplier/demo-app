@@ -5,14 +5,14 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_more_window.*
+import com.ggg.morewindow.databinding.ActivityMoreWindowBinding
 
 class MoreWindowActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_more_window)
-        setSupportActionBar(toolbar)
+        val binding = ActivityMoreWindowBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

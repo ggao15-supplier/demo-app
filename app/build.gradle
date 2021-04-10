@@ -1,18 +1,17 @@
-apply plugin: 'com.android.application'
+apply plugin: BuildPlugins.androidApplication
 
-apply plugin: 'kotlin-android'
+apply plugin: BuildPlugins.kotlinAndroid
 
-apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion AndroidSDK.compileSDK
     defaultConfig {
-        applicationId "com.e.myapplication"
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        applicationId AndroidSDK.applicationId
+        minSdkVersion AndroidSDK.minSDK
+        targetSdkVersion AndroidSDK.targetSDK
+        versionCode AndroidSDK.versionCode
+        versionName AndroidSDK.versionName
+        testInstrumentationRunner AndroidSDK.androidJunitRunner
     }
     buildTypes {
         release {
@@ -25,23 +24,28 @@ android {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
+
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
-    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:2.2.0"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    implementation Libs.kotlin_sdk
+    implementation Libs.androidx_appcompat
+    implementation Libs.androidx_core
+    implementation Libs.androidx_lifecycle_runtime
+    implementation Libs.androidx_lifecycle_livedata
+    implementation Libs.androidx_lifecycle_reactivestreams
+    implementation Libs.androidx_lifecycle_viewmodel
+    implementation Libs.kotlinx_coroutines
+    implementation Libs.androidx_constraintlayout
+    implementation Libs.retrofit2
+    testImplementation Libs.test_junit_lib
+    androidTestImplementation Libs.test_runner
+    androidTestImplementation Libs.test_espresso_core
+    implementation Libs.androidx_recyclerview
     implementation project(':roundhead')
     implementation project(':remoteviews')
     implementation project(':animations')
@@ -49,5 +53,4 @@ dependencies {
     implementation project(':regionview')
     implementation project(':morewindow')
     implementation project(':surfaceview')
-    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
 }
