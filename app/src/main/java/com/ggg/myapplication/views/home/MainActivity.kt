@@ -69,7 +69,10 @@ class MainActivity : AppCompatActivity() {
                     SelfModule.SurfaceView.value,
                     module = SelfModule.SurfaceView
                 ),
-                MusicItem("God is girl", "Crystal"),
+                MusicItem(
+                    "God is girl", SelfModule.Audio.value,
+                    module = SelfModule.Audio
+                ),
                 MusicItem("God is girl", "Crystal"),
                 MusicItem("God is girl", "Crystal"),
                 MusicItem("God is girl", "Crystal"),
