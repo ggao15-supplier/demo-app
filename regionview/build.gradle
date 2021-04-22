@@ -16,8 +16,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
+        sourceCompatibility AndroidSDK.jdkVersion
+        targetCompatibility AndroidSDK.jdkVersion
     }
 
     viewBinding {
@@ -27,9 +27,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
     implementation Libs.kotlin_sdk
     implementation Libs.androidx_appcompat
     implementation Libs.androidx_core

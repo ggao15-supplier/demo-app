@@ -1,19 +1,12 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+apply plugin: BuildPlugins.androidLibrary
+apply plugin: BuildPlugins.kotlinAndroid
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
-
-
+    compileSdkVersion AndroidSDK.compileSDK
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
+        minSdkVersion AndroidSDK.minSDK
+        targetSdkVersion AndroidSDK.targetSDK
+        testInstrumentationRunner AndroidSDK.androidJunitRunner
     }
 
     buildTypes {
@@ -22,6 +15,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility AndroidSDK.jdkVersion
+        targetCompatibility AndroidSDK.jdkVersion
+    }
+    kotlinOptions {
+        jvmTarget = "$AndroidSDK.jdkVersion"
+    }
 
     viewBinding {
         enabled = true
@@ -29,13 +29,11 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     implementation Libs.kotlin_sdk
     implementation Libs.androidx_appcompat
     implementation Libs.androidx_core
-    implementation Libs.androidx_recyclerview
     implementation Libs.androidx_constraintlayout
+    implementation Libs.androidx_recyclerview
     testImplementation Libs.test_junit_lib
     androidTestImplementation Libs.test_runner
     androidTestImplementation Libs.test_espresso_core

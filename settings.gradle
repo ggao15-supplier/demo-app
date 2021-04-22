@@ -1,3 +1,4 @@
+include ':custombinder'
 include ':desinpattern'
 include ':surfaceview'
 include ':app'

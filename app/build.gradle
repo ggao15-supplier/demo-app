@@ -21,8 +21,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
+        sourceCompatibility AndroidSDK.jdkVersion
+        targetCompatibility AndroidSDK.jdkVersion
     }
 
     viewBinding {

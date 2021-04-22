@@ -21,6 +21,7 @@ object AndroidSDK {
     const val versionName = "1.0"
     const val androidJunitRunner = "androidx.test.runner.AndroidJUnitRunner"
     const val applicationId = "com.ggg.demo"
+    const val jdkVersion = 1.8
 }
 
 object Versions {
