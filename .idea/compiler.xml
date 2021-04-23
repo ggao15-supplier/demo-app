@@ -6,11 +6,11 @@
       <module name="demo-app.app" target="1.8" />
       <module name="demo-app.buildSrc" target="1.8" />
       <module name="demo-app.cliprect" target="1.8" />
-      <module name="demo-app.custombinder" target="1.8" />
       <module name="demo-app.leetcode" target="1.8" />
       <module name="demo-app.memoryobserver" target="1.8" />
       <module name="demo-app.morewindow" target="1.8" />
       <module name="demo-app.regionview" target="1.8" />
+      <module name="demo-app.remoteAIDL" target="1.8" />
       <module name="demo-app.remoteviews" target="1.8" />
       <module name="demo-app.roundhead" target="1.8" />
       <module name="demo-app.surfaceview" target="1.8" />

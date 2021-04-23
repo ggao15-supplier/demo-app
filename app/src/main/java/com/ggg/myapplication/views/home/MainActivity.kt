@@ -73,7 +73,10 @@ class MainActivity : AppCompatActivity() {
                     "God is girl", SelfModule.Audio.value,
                     module = SelfModule.Audio
                 ),
-                MusicItem("God is girl", "Crystal"),
+                MusicItem(
+                    "God is girl", SelfModule.Aidl.value,
+                    module = SelfModule.Aidl
+                ),
                 MusicItem("God is girl", "Crystal"),
                 MusicItem("God is girl", "Crystal"),
                 MusicItem("God is girl", "Crystal"),

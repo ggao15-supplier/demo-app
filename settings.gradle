@@ -1,4 +1,4 @@
-include ':custombinder'
+include ':remoteAIDL'
 include ':desinpattern'
 include ':surfaceview'
 include ':app'

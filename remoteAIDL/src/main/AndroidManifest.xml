@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.ggg.custombinder">
+
+    <application>
+        <activity android:name=".client.ClientActivity" />
+        <service
+                android:name=".service.RemoteService"
+                android:exported="true"
+                android:process=":remote">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.ggg.remote_service" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>
