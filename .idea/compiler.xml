@@ -8,6 +8,7 @@
       <module name="demo-app.cliprect" target="1.8" />
       <module name="demo-app.leetcode" target="1.8" />
       <module name="demo-app.memoryobserver" target="1.8" />
+      <module name="demo-app.messenger" target="1.8" />
       <module name="demo-app.morewindow" target="1.8" />
       <module name="demo-app.regionview" target="1.8" />
       <module name="demo-app.remoteAIDL" target="1.8" />

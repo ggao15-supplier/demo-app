@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+            android:id="@+id/tvShow"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/btnAdd"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="100dp"
+            android:layout_marginVertical="50dp"
+            android:text="add user"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/btnShow" />
+
+    <Button
+            android:id="@+id/btnShow"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="100dp"
+            android:layout_marginVertical="50dp"
+            android:text="show user list"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
