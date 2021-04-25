@@ -1,3 +1,4 @@
+include ':sudoku'
 include ':messenger'
 include ':remoteAIDL'
 include ':desinpattern'

@@ -1,0 +1,44 @@
+apply plugin: BuildPlugins.androidLibrary
+apply plugin: BuildPlugins.kotlinAndroid
+apply plugin: BuildPlugins.kotlinApt
+
+android {
+    compileSdkVersion AndroidSDK.compileSDK
+    defaultConfig {
+        minSdkVersion AndroidSDK.minSDK
+        targetSdkVersion AndroidSDK.targetSDK
+        testInstrumentationRunner AndroidSDK.androidJunitRunner
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility AndroidSDK.jdkVersion
+        targetCompatibility AndroidSDK.jdkVersion
+    }
+    kotlinOptions {
+        jvmTarget = "$AndroidSDK.jdkVersion"
+    }
+    viewBinding {
+        enabled = true
+    }
+    dataBinding {
+        enabled = true
+    }
+
+}
+
+dependencies {
+    implementation Libs.kotlin_sdk
+    implementation Libs.androidx_appcompat
+    implementation Libs.androidx_core
+    implementation Libs.androidx_constraintlayout
+    implementation Libs.androidx_recyclerview
+    testImplementation Libs.test_junit_lib
+    androidTestImplementation Libs.test_runner
+    androidTestImplementation Libs.test_espresso_core
+}
