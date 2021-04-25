@@ -54,4 +54,5 @@ dependencies {
     implementation project(':morewindow')
     implementation project(':surfaceview')
     implementation project(':remoteAIDL')
+    implementation project(':messenger')
 }

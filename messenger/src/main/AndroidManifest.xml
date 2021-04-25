@@ -3,7 +3,16 @@
         package="com.ggg.messager">
 
     <application>
-        <activity android:name=".client.MessengerClientActivity"></activity>
+        <activity android:name=".client.MessengerClientActivity" />
+        <service
+                android:name=".service.MessengerService"
+                android:exported="true"
+                android:process=":messenger">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.ggg.messager.MessengerService" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
