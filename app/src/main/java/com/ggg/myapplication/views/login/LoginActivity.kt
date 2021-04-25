@@ -13,13 +13,14 @@ import com.ggg.remoteviews.service.PlayerService
 import com.ggg.roundhead.RoundImageLoad
 import com.ggg.roundhead.shaper.ShaderRoundImageLoad
 import com.ggg.roundhead.xfmodel.XFModelRoundImageLoad
+import com.ggg.sudoku.view.SudokuActivity
 
 class LoginActivity : AppCompatActivity() {
     private val handler: Handler = Handler()
-    private lateinit var binding:ActivityLoginBinding
+    private lateinit var binding: ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       binding= ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         startService(Intent(this, PlayerService::class.java))
         val shaderRoundImageLoad: RoundImageLoad = ShaderRoundImageLoad()
@@ -32,7 +33,8 @@ class LoginActivity : AppCompatActivity() {
             )
         )
         binding.btnEnter.setOnClickListener {
-            val translationDrawable: TransitionDrawable = binding.btnEnter.background as TransitionDrawable
+            val translationDrawable: TransitionDrawable =
+                binding.btnEnter.background as TransitionDrawable
             translationDrawable.startTransition(300)
             handler.postDelayed({
                 MainActivity.enter(this@LoginActivity)
@@ -44,9 +46,13 @@ class LoginActivity : AppCompatActivity() {
             xfModelRoundImageLoad.handleImage(
                 BitmapFactory.decodeResource(
                     resources,
-                    R.drawable.ic_launcher
+                    R.drawable.ic_sudoku
                 )
             )
         )
+
+        binding.ivHeadRight.setOnClickListener {
+            startActivity(Intent(this@LoginActivity, SudokuActivity::class.java))
+        }
     }
 }

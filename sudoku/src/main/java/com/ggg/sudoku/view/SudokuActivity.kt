@@ -15,9 +15,10 @@ class SudokuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val bind: ActivitySudokuBinding = ActivitySudokuBinding.inflate(layoutInflater)
         setContentView(bind.root)
-        bind.viewModel = SudokuViewModel()
-        lifecycle.addObserver(bind.viewModel)
-        bind.viewModel.tableLayoutManagerObservable.set(GridLayoutManager(this, 81))
-        bind.viewModel.inputLayoutManagerObservable.set(GridLayoutManager(this, 9))
+        val viewModel = SudokuViewModel()
+        lifecycle.addObserver(viewModel)
+        viewModel.tableLayoutManagerObservable.set(GridLayoutManager(this, 81))
+        viewModel.inputLayoutManagerObservable.set(GridLayoutManager(this, 9))
+        bind.viewModel = viewModel
     }
 }

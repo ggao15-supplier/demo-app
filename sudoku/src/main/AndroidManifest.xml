@@ -2,4 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         package="com.ggg.sudoku">
 
+    <application>
+        <activity android:name=".view.SudokuActivity" />
+    </application>
 </manifest>
