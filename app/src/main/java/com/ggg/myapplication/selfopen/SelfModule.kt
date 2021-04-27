@@ -5,6 +5,7 @@ import android.content.Intent
 import com.ggg.audio.activity.AudioActivity
 import com.ggg.custombinder.client.ClientActivity
 import com.ggg.messager.client.MessengerClientActivity
+import com.ggg.sudoku.view.SudokuActivity
 import com.ggg.surfaceview.activity.SurfaceActivity
 
 
@@ -15,7 +16,8 @@ enum class SelfModule(val value: String) {
     SurfaceView("surfaceView"),
     Aidl("aidl"),
     Messenger("Messenger"),
-    Audio("audio");
+    Audio("audio"),
+    Suduku("suduku");
 
     fun openSelfModule(context: Context) {
         when (this) {
@@ -30,6 +32,9 @@ enum class SelfModule(val value: String) {
             }
             Messenger -> {
                 context.startActivity(Intent(context, MessengerClientActivity::class.java))
+            }
+            Suduku -> {
+                context.startActivity(Intent(context, SudokuActivity::class.java))
             }
         }
 

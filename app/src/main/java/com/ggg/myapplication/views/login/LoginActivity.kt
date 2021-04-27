@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ggg.myapplication.views.home.MainActivity
 import com.e.myapplication.R
 import com.e.myapplication.databinding.ActivityLoginBinding
+import com.ggg.myapplication.selfopen.SelfModule
 import com.ggg.remoteviews.service.PlayerService
 import com.ggg.roundhead.RoundImageLoad
 import com.ggg.roundhead.shaper.ShaderRoundImageLoad
@@ -52,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
         )
 
         binding.ivHeadRight.setOnClickListener {
-            startActivity(Intent(this@LoginActivity, SudokuActivity::class.java))
+            SelfModule.Suduku.openSelfModule(it.context)
         }
     }
 }
