@@ -14,8 +14,8 @@ class DataBindingUtils {
         @BindingAdapter("app:adapter", "app:layoutManager")
         fun <VH : RecyclerView.ViewHolder> setRecycleViewAdapter(
             view: RecyclerView,
-            adapter: Adapter<VH>,
-            layoutManager: RecyclerView.LayoutManager
+            adapter: Adapter<VH>?,
+            layoutManager: RecyclerView.LayoutManager?
         ) {
             view.adapter = adapter
             view.layoutManager = layoutManager

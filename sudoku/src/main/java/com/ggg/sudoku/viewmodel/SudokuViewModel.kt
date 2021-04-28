@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.RecyclerView
  * Created by  gggao on 4/25/2021.
  */
 class SudokuViewModel : ViewModel(), LifecycleObserver {
-    val tableAdapterObservable: ObservableField<RecyclerView.Adapter<in RecyclerView.ViewHolder>> =
+    val tableAdapterObservable: ObservableField<RecyclerView.Adapter<in RecyclerView.ViewHolder>?> =
         ObservableField()
-    val tableLayoutManagerObservable: ObservableField<RecyclerView.LayoutManager> =
+    val tableLayoutManagerObservable: ObservableField<RecyclerView.LayoutManager?> =
         ObservableField()
-    val inputAdapterObservable: ObservableField<RecyclerView.Adapter<in RecyclerView.ViewHolder>> =
+    val inputAdapterObservable: ObservableField<RecyclerView.Adapter<in RecyclerView.ViewHolder>?> =
         ObservableField()
-    val inputLayoutManagerObservable: ObservableField<RecyclerView.LayoutManager> =
+    val inputLayoutManagerObservable: ObservableField<RecyclerView.LayoutManager?> =
         ObservableField()
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
