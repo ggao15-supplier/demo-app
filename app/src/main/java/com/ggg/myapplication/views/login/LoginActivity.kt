@@ -1,11 +1,14 @@
 package com.ggg.myapplication.views.login
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Canvas
 import android.graphics.drawable.TransitionDrawable
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.ggg.myapplication.views.home.MainActivity
 import com.e.myapplication.R
 import com.e.myapplication.databinding.ActivityLoginBinding
@@ -14,7 +17,6 @@ import com.ggg.remoteviews.service.PlayerService
 import com.ggg.roundhead.RoundImageLoad
 import com.ggg.roundhead.shaper.ShaderRoundImageLoad
 import com.ggg.roundhead.xfmodel.XFModelRoundImageLoad
-import com.ggg.sudoku.view.SudokuActivity
 
 class LoginActivity : AppCompatActivity() {
     private val handler: Handler = Handler()
@@ -43,17 +45,31 @@ class LoginActivity : AppCompatActivity() {
         }
         val xfModelRoundImageLoad = XFModelRoundImageLoad()
 
-        binding.ivHeadRight.setImageBitmap(
-            xfModelRoundImageLoad.handleImage(
-                BitmapFactory.decodeResource(
-                    resources,
-                    R.drawable.ic_sudoku
-                )
+        turn2Bitmap(R.drawable.ic_sudoku)?.apply {
+            binding.ivHeadRight.setImageBitmap(
+                xfModelRoundImageLoad.handleImage(this)
             )
-        )
+        }
+
 
         binding.ivHeadRight.setOnClickListener {
             SelfModule.Suduku.openSelfModule(it.context)
         }
     }
+
+    private fun turn2Bitmap(resId: Int): Bitmap? {
+        val vectorDrawable = ContextCompat.getDrawable(this, resId)
+        return vectorDrawable?.let {
+            val temp = Bitmap.createBitmap(
+                it.intrinsicWidth,
+                it.intrinsicHeight, Bitmap.Config.ARGB_8888
+            )
+            val canvas = Canvas(temp)
+
+            it.setBounds(0, 0, canvas.width, canvas.height)
+            it.draw(canvas)
+            return temp
+        }
+    }
+
 }
