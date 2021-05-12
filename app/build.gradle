@@ -58,5 +58,4 @@ dependencies {
     implementation project(':surfaceview')
     implementation project(':remoteAIDL')
     implementation project(':messenger')
-    implementation project(':sudoku')
 }

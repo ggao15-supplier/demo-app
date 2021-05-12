@@ -45,16 +45,12 @@ class LoginActivity : AppCompatActivity() {
         }
         val xfModelRoundImageLoad = XFModelRoundImageLoad()
 
-        turn2Bitmap(R.drawable.ic_sudoku)?.apply {
+        turn2Bitmap(R.mipmap.ic_launcher)?.apply {
             binding.ivHeadRight.setImageBitmap(
                 xfModelRoundImageLoad.handleImage(this)
             )
         }
 
-
-        binding.ivHeadRight.setOnClickListener {
-            SelfModule.Suduku.openSelfModule(it.context)
-        }
     }
 
     private fun turn2Bitmap(resId: Int): Bitmap? {
