@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/cliprect" />
             <option value="$PROJECT_DIR$/desinpattern" />
+            <option value="$PROJECT_DIR$/jniutils" />
             <option value="$PROJECT_DIR$/leetcode" />
             <option value="$PROJECT_DIR$/memoryobserver" />
             <option value="$PROJECT_DIR$/messenger" />

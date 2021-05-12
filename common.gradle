@@ -1,0 +1,47 @@
+apply plugin: BuildPlugins.kotlinAndroid
+
+android {
+    compileSdkVersion AndroidSDK.compileSDK
+    defaultConfig {
+        minSdkVersion AndroidSDK.minSDK
+        targetSdkVersion AndroidSDK.targetSDK
+        testInstrumentationRunner AndroidSDK.androidJunitRunner
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    viewBinding {
+        enabled = true
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility AndroidSDK.jdkVersion
+        targetCompatibility AndroidSDK.jdkVersion
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Libs.kotlin_sdk
+    implementation Libs.androidx_appcompat
+    implementation Libs.androidx_core
+    implementation Libs.androidx_lifecycle_runtime
+    implementation Libs.androidx_lifecycle_livedata
+    implementation Libs.androidx_lifecycle_reactivestreams
+    implementation Libs.androidx_lifecycle_viewmodel
+    implementation Libs.kotlinx_coroutines
+    implementation Libs.androidx_constraintlayout
+    implementation Libs.retrofit2
+    testImplementation Libs.test_junit_lib
+    androidTestImplementation Libs.test_runner
+    androidTestImplementation Libs.test_espresso_core
+    implementation Libs.androidx_recyclerview
+}
