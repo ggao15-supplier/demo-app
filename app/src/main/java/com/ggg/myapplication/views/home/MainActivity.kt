@@ -81,7 +81,10 @@ class MainActivity : AppCompatActivity() {
                     "God is girl", SelfModule.Messenger.value,
                     module = SelfModule.Messenger
                 ),
-                MusicItem("God is girl", "Crystal"),
+                MusicItem(
+                    "God is girl", SelfModule.RenderScript.value,
+                    module = SelfModule.RenderScript
+                ),
                 MusicItem("God is girl", "Crystal"),
                 MusicItem("God is girl", "Crystal"),
                 MusicItem("God is girl", "Crystal"),

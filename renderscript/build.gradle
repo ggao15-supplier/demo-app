@@ -1,0 +1,3 @@
+
+apply plugin: BuildPlugins.androidLibrary
+apply from: "../common.gradle"

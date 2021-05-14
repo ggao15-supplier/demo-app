@@ -15,7 +15,7 @@ object BuildPlugins {
 }
 
 object AndroidSDK {
-    const val minSDK = 21
+    const val minSDK = 24
     const val compileSDK = 30
     const val targetSDK = compileSDK
     const val versionCode = 1
@@ -36,6 +36,7 @@ object Versions {
     const val test_junit_lib = "4.12"
     const val test_runner_lib = "1.2.0"
     const val test_espresso_core_lib = "3.2.0"
+    const val material_lib = "1.0.0"
 }
 
 object Libs {
@@ -61,4 +62,5 @@ object Libs {
     const val test_runner = "androidx.test:runner:${Versions.test_runner_lib}"
     const val test_espresso_core =
         "androidx.test.espresso:espresso-core:${Versions.test_espresso_core_lib}"
+    const val material_lib = "com.google.android.material:material:${Versions.material_lib}"
 }

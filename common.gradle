@@ -7,6 +7,9 @@ android {
         targetSdkVersion AndroidSDK.targetSDK
         testInstrumentationRunner AndroidSDK.androidJunitRunner
         multiDexEnabled true
+        renderscriptTargetApi AndroidSDK.minSDK
+        renderscriptSupportModeEnabled true
+
     }
 
     buildTypes {
@@ -40,8 +43,11 @@ dependencies {
     implementation Libs.kotlinx_coroutines
     implementation Libs.androidx_constraintlayout
     implementation Libs.retrofit2
+    implementation Libs.androidx_recyclerview
+    implementation Libs.material_lib
+
     testImplementation Libs.test_junit_lib
     androidTestImplementation Libs.test_runner
     androidTestImplementation Libs.test_espresso_core
-    implementation Libs.androidx_recyclerview
+
 }
