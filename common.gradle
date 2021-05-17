@@ -36,6 +36,7 @@ dependencies {
     implementation Libs.kotlin_sdk
     implementation Libs.androidx_appcompat
     implementation Libs.androidx_core
+    implementation Libs.androidx_core_ktx
     implementation Libs.androidx_lifecycle_runtime
     implementation Libs.androidx_lifecycle_livedata
     implementation Libs.androidx_lifecycle_reactivestreams
