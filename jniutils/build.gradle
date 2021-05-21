@@ -1,2 +1,16 @@
 apply plugin: BuildPlugins.androidLibrary
 apply from: "../common.gradle"
+android {
+    defaultConfig {
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
+    }
+    externalNativeBuild{
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+}

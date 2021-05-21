@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import com.ggg.audio.activity.AudioActivity
 import com.ggg.custombinder.client.ClientActivity
+import com.ggg.jniutils.activity.JNIUtilActivity
 import com.ggg.messager.client.MessengerClientActivity
 import com.ggg.renderscript.RendScriptDemoActivity
 import com.ggg.surfaceview.activity.SurfaceActivity
@@ -17,7 +18,8 @@ enum class SelfModule(val value: String) {
     Aidl("aidl"),
     Messenger("Messenger"),
     Audio("audio"),
-    RenderScript("RenderScript");
+    RenderScript("RenderScript"),
+    JNIUtils("JNIUtils");
 
     fun openSelfModule(context: Context) {
         when (this) {
@@ -33,10 +35,13 @@ enum class SelfModule(val value: String) {
             Messenger -> {
                 context.startActivity(Intent(context, MessengerClientActivity::class.java))
             }
-            RenderScript -> {
-                context.startActivity(Intent(context, RendScriptDemoActivity::class.java))
+            JNIUtils -> {
+                context.startActivity(Intent(context, JNIUtilActivity::class.java))
             }
 
+            else -> {
+
+            }
         }
 
     }

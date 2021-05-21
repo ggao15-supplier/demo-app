@@ -85,7 +85,8 @@ class MainActivity : AppCompatActivity() {
                     "God is girl", SelfModule.RenderScript.value,
                     module = SelfModule.RenderScript
                 ),
-                MusicItem("God is girl", "Crystal"),
+                MusicItem("God is girl", SelfModule.JNIUtils.value,
+                    module = SelfModule.JNIUtils),
                 MusicItem("God is girl", "Crystal"),
                 MusicItem("God is girl", "Crystal"),
                 MusicItem("God is girl", "Crystal")

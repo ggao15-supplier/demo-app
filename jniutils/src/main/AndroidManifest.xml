@@ -1,5 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.ggg.jniutils">
+        package="com.ggg.jniutils"
+        android:sharedUserId="android.ui.shell">
 
+    <application>
+        <activity android:name=".activity.JNIUtilActivity" />
+    </application>
 </manifest>
