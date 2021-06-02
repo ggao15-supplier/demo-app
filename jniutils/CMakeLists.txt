@@ -11,12 +11,18 @@ cmake_minimum_required(VERSION 3.4.1)
 # automatically packages shared libraries with your APK.
 
 add_library( # Specifies the name of the library.
-             native-lib
+        native-lib
 
-             # Sets the library as a shared library.
-             SHARED
+        # Sets the library as a shared library.
+        SHARED
 
-             # Provides a relative path to your source file(s).
-             src/main/cpp/nativelib.cpp )
-
+        # Provides a relative path to your source file(s).
+        src/main/cpp/nativelib.cpp)
+find_library(
+        log-lib
+        log)
+target_link_libraries(
+        native-lib
+        ${log-lib}
+)
 include_directories(src/main/cpp/includes)
