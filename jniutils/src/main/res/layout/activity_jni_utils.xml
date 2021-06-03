@@ -22,4 +22,42 @@
             android:text="call JNI"
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@id/tvShow" />
+
+    <TextView
+            android:id="@+id/tvArray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:minHeight="50dp"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/btnCall" />
+
+    <Button
+            android:id="@+id/btnArray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="50dp"
+            android:text="call Parse"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/tvArray" />
+
+    <TextView
+            android:id="@+id/tvTypeArray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:minHeight="50dp"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/btnArray" />
+
+    <Button
+            android:id="@+id/btnTypeArray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="50dp"
+            android:text="call Parse Type"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/tvTypeArray" />
 </androidx.constraintlayout.widget.ConstraintLayout>
