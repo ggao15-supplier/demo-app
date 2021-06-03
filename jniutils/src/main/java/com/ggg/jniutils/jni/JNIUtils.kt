@@ -17,8 +17,8 @@ class JNIUtils {
     fun getTypeValue(type: Int): String {
         return when (type) {
             1 -> "1 value is 1"
-            2 -> "1 value is 1"
-            3 -> "1 value is 1"
+            2 -> "2 value is 2"
+            3 -> "3 value is 3"
             else -> "empty"
         }
     }

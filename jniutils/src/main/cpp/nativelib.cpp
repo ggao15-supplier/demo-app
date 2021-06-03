@@ -52,11 +52,16 @@ Java_com_ggg_jniutils_jni_JNIUtils_parseTypeArray(JNIEnv *env, jobject thiz, jin
     jmethodID methodID = env->GetMethodID(clazz, "getTypeValue", "(I)Ljava/lang/String;");
     auto value = reinterpret_cast<jstring>( env->CallObjectMethod(thiz, methodID, *firstItem));
     strcpy(result, env->GetStringUTFChars(value, nullptr));
+    strcat(result, "\n");
     for (int i = 1; i < size; ++i) {
         auto data = reinterpret_cast<jstring>( env->CallObjectMethod(thiz, methodID,
                                                                      *(firstItem + i)));
         strcat(result, env->GetStringUTFChars(data, nullptr));
+        if (i < size - 1) {
+            strcat(result, "\n");
+        }
     }
     env->ReleaseIntArrayElements(array, firstItem, 0);
+    env->DeleteLocalRef(clazz);
     return env->NewStringUTF(result);
 }
