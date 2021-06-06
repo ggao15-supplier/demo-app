@@ -10,6 +10,10 @@ class JNIUtils {
         System.loadLibrary("native-lib")
     }
 
+    companion object {
+        const val testFiled = "test"
+    }
+
     external fun callMD5(value: String): String
     external fun parseArray(array: Array<String>): String
     external fun parseTypeArray(array: IntArray): String

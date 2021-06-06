@@ -1,6 +1,6 @@
 //
 // Created by gggao on 5/19/2021.
-//https://juejin.cn/post/6844904192780271630
+// https://juejin.cn/post/6844904192780271630
 //
 
 #include <jni.h>
@@ -19,6 +19,9 @@ extern "C" JNIEXPORT jstring JNICALL Java_com_ggg_jniutils_jni_JNIUtils_callMD5
     auto values = reinterpret_cast<jstring>( env->CallObjectMethod(obj, method_getTypeValue,
                                                                    1));
     LOGE("value is %s", env->GetStringUTFChars(values, nullptr));
+    jfieldID filedID = env->GetStaticFieldID(clazz, "testFiled", "Ljava/lang/String;");
+    jstring testField = reinterpret_cast<jstring>(env->GetStaticObjectField(clazz, filedID));
+    LOGE("static value is %s", env->GetStringUTFChars(testField, nullptr));
     return env->NewStringUTF(c_str);
 }
 
@@ -42,8 +45,9 @@ extern "C" JNIEXPORT jstring JNICALL Java_com_ggg_jniutils_jni_JNIUtils_parseArr
     }
 
     return env->NewStringUTF(result);
-}extern "C"
-JNIEXPORT jstring JNICALL
+}
+
+extern "C" JNIEXPORT jstring JNICALL
 Java_com_ggg_jniutils_jni_JNIUtils_parseTypeArray(JNIEnv *env, jobject thiz, jintArray array) {
     int size = env->GetArrayLength(array);
     char *result = (char *) malloc(sizeof(jint));
