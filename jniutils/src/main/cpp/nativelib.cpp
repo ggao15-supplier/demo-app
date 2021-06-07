@@ -20,7 +20,7 @@ extern "C" JNIEXPORT jstring JNICALL Java_com_ggg_jniutils_jni_JNIUtils_callMD5
                                                                    1));
     LOGE("value is %s", env->GetStringUTFChars(values, nullptr));
     jfieldID filedID = env->GetStaticFieldID(clazz, "testFiled", "Ljava/lang/String;");
-    jstring testField = reinterpret_cast<jstring>(env->GetStaticObjectField(clazz, filedID));
+    auto testField = reinterpret_cast<jstring>(env->GetStaticObjectField(clazz, filedID));
     LOGE("static value is %s", env->GetStringUTFChars(testField, nullptr));
     return env->NewStringUTF(c_str);
 }
