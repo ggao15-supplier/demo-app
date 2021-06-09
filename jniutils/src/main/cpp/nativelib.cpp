@@ -10,6 +10,29 @@
 
 #define  LOGE(...) __android_log_print(ANDROID_LOG_INFO,"JNI",__VA_ARGS__)
 
+void parseString(JNIEnv *env, jstring data) {
+
+    const char *c_str = env->GetStringUTFChars(data, nullptr);
+    if (c_str == nullptr) {
+        return;
+    }
+    jint size = env->GetStringLength(data);
+
+    for (int i = 0; i < size; ++i) {
+        LOGE("c_st is %c ,", *(c_str + 1));
+    }
+    env->ReleaseStringUTFChars(data, c_str);
+}
+
+void setLocalFiled(JNIEnv *env, jobject obj, char *newValue) {
+    jclass clazz = env->GetObjectClass(obj);
+    jfieldID jfieldId = env->GetFieldID(clazz, "testLocalFiled", "Ljava/lang/String;");
+
+    jstring value = env->NewStringUTF(newValue);
+    env->SetObjectField(obj, jfieldId, value);
+    env->ReleaseStringUTFChars(value, newValue);
+}
+
 extern "C" JNIEXPORT jstring JNICALL Java_com_ggg_jniutils_jni_JNIUtils_callMD5
         (JNIEnv *env, jobject obj, jstring data) {
     const char *c_str = env->GetStringUTFChars(data, nullptr);
@@ -22,6 +45,9 @@ extern "C" JNIEXPORT jstring JNICALL Java_com_ggg_jniutils_jni_JNIUtils_callMD5
     jfieldID filedID = env->GetStaticFieldID(clazz, "testFiled", "Ljava/lang/String;");
     auto testField = reinterpret_cast<jstring>(env->GetStaticObjectField(clazz, filedID));
     LOGE("static value is %s", env->GetStringUTFChars(testField, nullptr));
+    parseString(env, testField);
+    char *newValue = "abcd";
+    setLocalFiled(env, obj, newValue);
     return env->NewStringUTF(c_str);
 }
 

@@ -1,5 +1,6 @@
 package com.ggg.jniutils.activity
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ggg.jniutils.databinding.ActivityJniUtilsBinding
@@ -11,12 +12,14 @@ import com.ggg.jniutils.jni.JNIUtils
  */
 class JNIUtilActivity : AppCompatActivity() {
     private val jniUtils = JNIUtils()
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: ActivityJniUtilsBinding = ActivityJniUtilsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.btnCall.setOnClickListener {
-            binding.tvShow.text = jniUtils.callMD5("aaa")
+            binding.tvShow.text = "${jniUtils.callMD5("aaa")}-- ${jniUtils.testLocalFiled}"
+
         }
         binding.btnArray.setOnClickListener {
             binding.tvArray.text = jniUtils.parseArray(arrayOf("tttt,", "dddd,"))
