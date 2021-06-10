@@ -24,13 +24,29 @@ void parseString(JNIEnv *env, jstring data) {
     env->ReleaseStringUTFChars(data, c_str);
 }
 
-void setLocalFiled(JNIEnv *env, jobject obj, char *newValue) {
+void setLocalFiled(JNIEnv *env, jobject obj, jstring newValue) {
     jclass clazz = env->GetObjectClass(obj);
     jfieldID jfieldId = env->GetFieldID(clazz, "testLocalFiled", "Ljava/lang/String;");
 
-    jstring value = env->NewStringUTF(newValue);
-    env->SetObjectField(obj, jfieldId, value);
-    env->ReleaseStringUTFChars(value, newValue);
+    env->SetObjectField(obj, jfieldId, newValue);
+    env->DeleteLocalRef(clazz);
+}
+
+void initPerson(JNIEnv *env) {
+    jclass personClazz = env->FindClass("com/ggg/jniutils/jni/Person");
+    jmethodID initMethodID = env->GetMethodID(personClazz, "<init>", "(Ljava/lang/String;I)V");
+    if (initMethodID == nullptr) {
+        return;
+    }
+    jstring name = env->NewStringUTF("Tom");
+    jobject person = env->NewObject(personClazz, initMethodID, name, 10);
+    jmethodID printMethodID = env->GetMethodID(personClazz, "print", "()Ljava/lang/String;");
+    auto value = reinterpret_cast<jstring>(env->CallObjectMethod(person, printMethodID));
+    LOGE("person is %s", env->GetStringUTFChars(value, nullptr));
+    env->DeleteLocalRef(name);
+    env->DeleteLocalRef(person);
+    env->DeleteLocalRef(personClazz);
+    env->DeleteLocalRef(value);
 }
 
 extern "C" JNIEXPORT jstring JNICALL Java_com_ggg_jniutils_jni_JNIUtils_callMD5
@@ -46,8 +62,10 @@ extern "C" JNIEXPORT jstring JNICALL Java_com_ggg_jniutils_jni_JNIUtils_callMD5
     auto testField = reinterpret_cast<jstring>(env->GetStaticObjectField(clazz, filedID));
     LOGE("static value is %s", env->GetStringUTFChars(testField, nullptr));
     parseString(env, testField);
-    char *newValue = "abcd";
+    jstring newValue = env->NewStringUTF("abcd");
     setLocalFiled(env, obj, newValue);
+    env->DeleteLocalRef(newValue);
+    initPerson(env);
     return env->NewStringUTF(c_str);
 }
 

@@ -14,7 +14,7 @@ class JNIUtils {
         const val testFiled = "test"
     }
 
-    var testLocalFiled = "1"
+    var testLocalFiled: String = "1"
     external fun callMD5(value: String): String
     external fun parseArray(array: Array<String>): String
     external fun parseTypeArray(array: IntArray): String
