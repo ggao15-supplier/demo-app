@@ -1,0 +1,3 @@
+D:/code/demo-app/jniutils/.cxx/cmake/release/x86_64/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_76011.dir
+D:/code/demo-app/jniutils/.cxx/cmake/release/x86_64/CMakeFiles/CMakeTmp/CMakeFiles/edit_cache.dir
+D:/code/demo-app/jniutils/.cxx/cmake/release/x86_64/CMakeFiles/CMakeTmp/CMakeFiles/rebuild_cache.dir

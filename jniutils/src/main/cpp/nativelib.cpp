@@ -7,8 +7,10 @@
 #include <string>
 #include <cstdlib>
 #include <android/log.h>
+#include <thread>
 
 #define  LOGE(...) __android_log_print(ANDROID_LOG_INFO,"JNI",__VA_ARGS__)
+JavaVM *javaVm;
 
 void parseString(JNIEnv *env, jstring data) {
 
@@ -112,4 +114,16 @@ Java_com_ggg_jniutils_jni_JNIUtils_parseTypeArray(JNIEnv *env, jobject thiz, jin
     env->ReleaseIntArrayElements(array, firstItem, 0);
     env->DeleteLocalRef(clazz);
     return env->NewStringUTF(result);
+}
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_ggg_jniutils_jni_JNIUtils_handlerImageData(JNIEnv *env, jobject thiz, jbyteArray array) {
+    jstring result = env->NewStringUTF("");
+
+    return result;
+}
+
+JNIEXPORT jint JNI_OnLoad(JavaVM *jm, void *reserved) {
+    javaVm = jm;
+    return JNI_VERSION_1_6;
 }

@@ -18,7 +18,7 @@ class JNIUtils {
     external fun callMD5(value: String): String
     external fun parseArray(array: Array<String>): String
     external fun parseTypeArray(array: IntArray): String
-
+    external fun handlerImageData(array: ByteArray): String
     fun getTypeValue(type: Int): String {
         return when (type) {
             1 -> "1 value is 1"
