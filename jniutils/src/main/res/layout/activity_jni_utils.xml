@@ -1,63 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="20dp">
+        android:layout_height="match_parent">
 
-    <TextView
-            android:id="@+id/tvShow"
+    <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="50dp"
-            android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent">
 
-    <Button
-            android:id="@+id/btnCall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:minHeight="50dp"
-            android:text="call JNI"
-            android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/tvShow" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="20dp">
 
-    <TextView
-            android:id="@+id/tvArray"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:minHeight="50dp"
-            android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/btnCall" />
+            <TextView
+                    android:id="@+id/tvShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="50dp"
+                    android:textSize="20sp"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-            android:id="@+id/btnArray"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:minHeight="50dp"
-            android:text="call Parse"
-            android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/tvArray" />
+            <Button
+                    android:id="@+id/btnCall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:minHeight="50dp"
+                    android:text="call JNI"
+                    android:textSize="20sp"
+                    app:layout_constraintTop_toBottomOf="@id/tvShow" />
 
-    <TextView
-            android:id="@+id/tvTypeArray"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:minHeight="50dp"
-            android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/btnArray" />
+            <TextView
+                    android:id="@+id/tvArray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:minHeight="50dp"
+                    android:textSize="20sp"
+                    app:layout_constraintTop_toBottomOf="@id/btnCall" />
 
-    <Button
-            android:id="@+id/btnTypeArray"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:minHeight="50dp"
-            android:text="call Parse Type"
-            android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/tvTypeArray" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                    android:id="@+id/btnArray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:minHeight="50dp"
+                    android:text="call Parse"
+                    android:textSize="20sp"
+                    app:layout_constraintTop_toBottomOf="@id/tvArray" />
+
+            <TextView
+                    android:id="@+id/tvTypeArray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:minHeight="50dp"
+                    android:textSize="20sp"
+                    app:layout_constraintTop_toBottomOf="@id/btnArray" />
+
+            <Button
+                    android:id="@+id/btnTypeArray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:minHeight="50dp"
+                    android:text="call Parse Type"
+                    android:textSize="20sp"
+                    app:layout_constraintTop_toBottomOf="@id/tvTypeArray" />
+
+            <TextView
+                    android:id="@+id/tvCreateThread"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:minHeight="50dp"
+                    android:textSize="20sp"
+                    app:layout_constraintTop_toBottomOf="@id/btnTypeArray" />
+
+            <Button
+                    android:id="@+id/btnCreateThread"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:minHeight="50dp"
+                    android:text="call Create Thread"
+                    android:textSize="20sp"
+                    app:layout_constraintTop_toBottomOf="@id/tvCreateThread" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

@@ -1,7 +1,0 @@
-[
-{
-  "directory": "D:/code/demo-app/jniutils/.cxx/cmake/debug/x86",
-  "command": "D:\\sdk\\ndk\\22.1.7171670\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=i686-none-linux-android24 --gcc-toolchain=D:/sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles\\native-lib.dir\\src\\main\\cpp\\nativelib.cpp.o -c D:\\code\\demo-app\\jniutils\\src\\main\\cpp\\nativelib.cpp",
-  "file": "D:/code/demo-app/jniutils/src/main/cpp/nativelib.cpp"
-}
-]

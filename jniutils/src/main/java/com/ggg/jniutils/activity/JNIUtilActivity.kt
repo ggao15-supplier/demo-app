@@ -12,6 +12,7 @@ import com.ggg.jniutils.jni.JNIUtils
  */
 class JNIUtilActivity : AppCompatActivity() {
     private val jniUtils = JNIUtils()
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +27,9 @@ class JNIUtilActivity : AppCompatActivity() {
         }
         binding.btnTypeArray.setOnClickListener {
             binding.tvTypeArray.text = jniUtils.parseTypeArray(intArrayOf(1, 2, 3))
+        }
+        binding.btnCreateThread.setOnClickListener {
+            jniUtils.handlerImageData(byteArrayOf())
         }
     }
 }

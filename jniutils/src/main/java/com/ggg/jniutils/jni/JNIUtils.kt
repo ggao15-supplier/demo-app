@@ -1,5 +1,7 @@
 package com.ggg.jniutils.jni
 
+import android.util.Log
+
 /**
  * Created by  gggao on 5/21/2021.
  * cd /build/tmp/kotlin-classes/debug
@@ -26,5 +28,11 @@ class JNIUtils {
             3 -> "3 value is 3"
             else -> "empty"
         }
+    }
+
+    fun callInThread(arg: String): String {
+
+        Log.d("xxxx", "call in thread :$arg")
+        return "Java method"
     }
 }

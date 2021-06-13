@@ -11,6 +11,7 @@
 
 #define  LOGE(...) __android_log_print(ANDROID_LOG_INFO,"JNI",__VA_ARGS__)
 JavaVM *javaVm;
+jobject gObj;
 
 void parseString(JNIEnv *env, jstring data) {
 
@@ -51,7 +52,9 @@ void initPerson(JNIEnv *env) {
     env->DeleteLocalRef(value);
 }
 
-extern "C" JNIEXPORT jstring JNICALL Java_com_ggg_jniutils_jni_JNIUtils_callMD5
+extern "C" JNIEXPORT jstring
+
+JNICALL Java_com_ggg_jniutils_jni_JNIUtils_callMD5
         (JNIEnv *env, jobject obj, jstring data) {
     const char *c_str = env->GetStringUTFChars(data, nullptr);
     jclass clazz = env->GetObjectClass(obj);
@@ -71,7 +74,9 @@ extern "C" JNIEXPORT jstring JNICALL Java_com_ggg_jniutils_jni_JNIUtils_callMD5
     return env->NewStringUTF(c_str);
 }
 
-extern "C" JNIEXPORT jstring JNICALL Java_com_ggg_jniutils_jni_JNIUtils_parseArray
+extern "C" JNIEXPORT jstring
+
+JNICALL Java_com_ggg_jniutils_jni_JNIUtils_parseArray
         (JNIEnv *env, jobject obj, jobjectArray data) {
 
     int size = env->GetArrayLength(data);
@@ -93,7 +98,9 @@ extern "C" JNIEXPORT jstring JNICALL Java_com_ggg_jniutils_jni_JNIUtils_parseArr
     return env->NewStringUTF(result);
 }
 
-extern "C" JNIEXPORT jstring JNICALL
+extern "C" JNIEXPORT jstring
+
+JNICALL
 Java_com_ggg_jniutils_jni_JNIUtils_parseTypeArray(JNIEnv *env, jobject thiz, jintArray array) {
     int size = env->GetArrayLength(array);
     char *result = (char *) malloc(sizeof(jint));
@@ -115,15 +122,47 @@ Java_com_ggg_jniutils_jni_JNIUtils_parseTypeArray(JNIEnv *env, jobject thiz, jin
     env->DeleteLocalRef(clazz);
     return env->NewStringUTF(result);
 }
+
+void *handler(void *) {
+    JNIEnv *env;
+    javaVm->AttachCurrentThread(&env, nullptr);
+    LOGE("thread handler");
+    jclass clazz = env->GetObjectClass(gObj);
+    jmethodID method = env->GetMethodID(clazz, "callInThread",
+                                        "(Ljava/lang/String;)Ljava/lang/String;");
+    jstring arg = env->NewStringUTF("new tread");
+    env->CallObjectMethod(gObj, method, arg);
+
+    env->DeleteLocalRef(clazz);
+    env->DeleteGlobalRef(gObj);
+    env->DeleteLocalRef(arg);
+    javaVm->DetachCurrentThread();
+    return nullptr;
+}
+
 extern "C"
-JNIEXPORT jstring JNICALL
+JNIEXPORT jstring
+
+JNICALL
 Java_com_ggg_jniutils_jni_JNIUtils_handlerImageData(JNIEnv *env, jobject thiz, jbyteArray array) {
     jstring result = env->NewStringUTF("");
-
+    pthread_t ptr;
+    gObj = env->NewGlobalRef(thiz);
+    int flag = pthread_create(&ptr, nullptr, handler, nullptr);
+    if (flag == 0) {
+        LOGE("create success");
+    } else {
+        LOGE("create failed %d", flag);
+    }
     return result;
 }
 
-JNIEXPORT jint JNI_OnLoad(JavaVM *jm, void *reserved) {
+JNIEXPORT jint
+JNI_OnLoad(JavaVM
+           *jm,
+           void *reserved
+) {
     javaVm = jm;
-    return JNI_VERSION_1_6;
+    return
+            JNI_VERSION_1_6;
 }
