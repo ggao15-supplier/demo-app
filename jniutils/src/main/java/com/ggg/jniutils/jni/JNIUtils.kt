@@ -12,6 +12,8 @@ class JNIUtils {
         System.loadLibrary("native-lib")
     }
 
+    var listener: OnNativeListener? = null
+
     companion object {
         const val testFiled = "test"
     }
@@ -31,8 +33,12 @@ class JNIUtils {
     }
 
     fun callInThread(arg: String): String {
-
+        listener?.onNative(arg)
         Log.d("xxxx", "call in thread :$arg")
         return "Java method"
+    }
+
+    interface OnNativeListener {
+        fun onNative(result: String)
     }
 }
