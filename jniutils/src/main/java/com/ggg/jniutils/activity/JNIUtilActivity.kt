@@ -36,7 +36,7 @@ class JNIUtilActivity : AppCompatActivity() {
             binding.tvTypeArray.text = jniUtils.parseTypeArray(intArrayOf(1, 2, 3))
         }
         binding.btnCreateThread.setOnClickListener {
-            jniUtils.handlerImageData(byteArrayOf(1,2,3))
+            jniUtils.handlerImageData(charArrayOf('1', '2', '3'))
         }
     }
 }

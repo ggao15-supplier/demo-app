@@ -13,13 +13,20 @@
 JavaVM *javaVm;
 jobject gObj;
 
+struct ImageData {
+    jchar *data;
+    jsize length;
+};
+
 char *jbyteArray2Char(JNIEnv *env, jbyteArray data) {
-    jbyte *element = env->GetByteArrayElements(data, nullptr);
+    jbyte *element = env->GetByteArrayElements(data, JNI_FALSE);
     jsize length = env->GetArrayLength(data);
     char *result = new char[length + 1];
     memset(result, 0, length + 1);
     memcpy(result, element, length);
     result[length] = 0;
+    LOGE("result is %s", element);
+
     env->ReleaseByteArrayElements(data, element, 0);
     return result;
 }
@@ -29,27 +36,17 @@ void *handler(void *threadArg) {
     javaVm->AttachCurrentThread(&env, nullptr);
     LOGE("thread handler");
     jclass clazz = env->GetObjectClass(gObj);
-    char *element = (char *) threadArg;
+    auto *data = (ImageData *) threadArg;
 
     jmethodID method = env->GetMethodID(clazz, "callInThread",
                                         "(Ljava/lang/String;)Ljava/lang/String;");
 
 
-    int i = 0;
-    while (true) {
-        char e = *(element + i);
-        if (e == 0) {
-            break;
-        } else {
-            LOGE("buffer is %c", e);
-            i++;
-        }
-    }
-    env->CallObjectMethod(gObj, method, env->NewStringUTF(element));
+    env->CallObjectMethod(gObj, method, env->NewString(data->data, data->length));
 
     env->DeleteLocalRef(clazz);
     env->DeleteGlobalRef(gObj);
-
+    free(data);
     javaVm->DetachCurrentThread();
     return nullptr;
 }
@@ -58,17 +55,22 @@ extern "C"
 JNIEXPORT jstring
 
 JNICALL
-Java_com_ggg_jniutils_jni_JNIUtils_handlerImageData(JNIEnv *env, jobject thiz, jbyteArray array) {
+Java_com_ggg_jniutils_jni_JNIUtils_handlerImageData(JNIEnv *env, jobject thiz, jcharArray array) {
     jstring result = env->NewStringUTF("");
     pthread_t ptr;
     gObj = env->NewGlobalRef(thiz);
-
-    int flag = pthread_create(&ptr, nullptr, handler, jbyteArray2Char(env, array));
+    jchar *element = env->GetCharArrayElements(array, JNI_FALSE);
+    auto *data = static_cast<ImageData *>(malloc(sizeof(ImageData)));
+    data->data = element;
+    data->length = env->GetArrayLength(array);
+    int flag = pthread_create(&ptr, nullptr, handler, data);
     if (flag == 0) {
         LOGE("create success");
     } else {
         LOGE("create failed %d", flag);
     }
+    env->ReleaseCharArrayElements(array, element, 0);
+
     return result;
 }
 
