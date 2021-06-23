@@ -18,19 +18,6 @@ struct ImageData {
     jsize length;
 };
 
-char *jbyteArray2Char(JNIEnv *env, jbyteArray data) {
-    jbyte *element = env->GetByteArrayElements(data, JNI_FALSE);
-    jsize length = env->GetArrayLength(data);
-    char *result = new char[length + 1];
-    memset(result, 0, length + 1);
-    memcpy(result, element, length);
-    result[length] = 0;
-    LOGE("result is %s", element);
-
-    env->ReleaseByteArrayElements(data, element, 0);
-    return result;
-}
-
 void *handler(void *threadArg) {
     JNIEnv *env;
     javaVm->AttachCurrentThread(&env, nullptr);
