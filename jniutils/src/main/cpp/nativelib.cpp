@@ -7,6 +7,7 @@
 #include <android/log.h>
 #include "thread_handler.h"
 
+
 void setLocalFiled(JNIEnv *env, jobject obj, jstring newValue) {
     jclass clazz = env->GetObjectClass(obj);
     jfieldID jfieldId = env->GetFieldID(clazz, "testLocalFiled", "Ljava/lang/String;");
