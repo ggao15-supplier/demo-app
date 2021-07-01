@@ -7,10 +7,20 @@ android {
                 cppFlags ""
             }
         }
+
+        ndk {
+            // Specifies the ABI configurations of your native
+            // libraries Gradle should build and package with your APK.
+            abiFilters 'x86', 'x86_64', 'armeabi-v7a',
+                    'arm64-v8a'
+        }
     }
     externalNativeBuild{
         cmake {
             path "CMakeLists.txt"
         }
+    }
+    sourceSets.main {
+        jniLibs.srcDir 'src/libs'  // change to a directory of your choice
     }
 }

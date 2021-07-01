@@ -4,13 +4,14 @@
 
 cmake_minimum_required(VERSION 3.10.1)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
-set(distribution_DIR  ${CMAKE_SOURCE_DIR}/src/libs)
+set(distribution_DIR ${CMAKE_SOURCE_DIR}/src/libs)
 set(CURRENT_DIR ${CMAKE_SOURCE_DIR})
 message("CURRENT_DIR:" ${CMAKE_SOURCE_DIR})
 
 #查找当前目录下的所有源文件，并保存到 DIR_LIB_SRCS 变量
 aux_source_directory(./src/main/cpp DIR_LIB_SRCS)
 include_directories(./src/main/cpp)
+include_directories(./src/main/cpp/include)
 
 find_library(
         log-lib
@@ -21,57 +22,8 @@ add_library(
         SHARED
         ${DIR_LIB_SRCS}
 )
-add_library(avcodec
-        SHARED
-        IMPORTED)
-add_library(avdevice
-        SHARED
-        IMPORTED)
-add_library(avfilter
-        SHARED
-        IMPORTED)
-add_library(avformat
-        SHARED
-        IMPORTED)
-add_library(avutil
-        SHARED
-        IMPORTED)
-add_library(swresample
-        SHARED
-        IMPORTED)
-add_library(swscale
-        SHARED
-        IMPORTED)
-
-set_target_properties(avcodec
-        PROPERTIES IMPORTED_LOCATION
-        ${CMAKE_SOURCE_DIR}/src/libs/ffmpeg/armeabi-v7a/libavcodec.so)
-set_target_properties(avdevice
-        PROPERTIES IMPORTED_LOCATION
-        ${CMAKE_SOURCE_DIR}/src/libs/ffmpeg/armeabi-v7a/libavdevice.so)
-set_target_properties(avfilter
-        PROPERTIES IMPORTED_LOCATION
-        ${CMAKE_SOURCE_DIR}/src/libs/ffmpeg/armeabi-v7a/libavfilter.so)
-set_target_properties(avformat
-        PROPERTIES IMPORTED_LOCATION
-        ${CMAKE_SOURCE_DIR}/src/libs/ffmpeg/armeabi-v7a/libavformat.so)
-set_target_properties(avutil
-        PROPERTIES IMPORTED_LOCATION
-        ${CMAKE_SOURCE_DIR}/src/libs/ffmpeg/armeabi-v7a/libavutil.so)
-set_target_properties(swresample
-        PROPERTIES IMPORTED_LOCATION
-        ${CMAKE_SOURCE_DIR}/src/libs/ffmpeg/armeabi-v7a/libswresample.so)
-set_target_properties(swscale
-        PROPERTIES IMPORTED_LOCATION
-        ${CMAKE_SOURCE_DIR}/src/libs/ffmpeg/armeabi-v7a/libswscale.so)
 
 target_link_libraries(
         native-lib
-        ${avcodec}
-        ${avdevice}
-        ${avfilter}
-        ${avutil}
-        ${swresample}
-        ${swscale}
         ${log-lib}
 )
