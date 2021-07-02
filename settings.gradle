@@ -1,3 +1,4 @@
+include ':plugins'
 include ':renderscript'
 include ':jniutils'
 include ':messenger'

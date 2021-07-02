@@ -1,6 +1,6 @@
 apply plugin: BuildPlugins.androidApplication
 apply from: "../common.gradle"
-
+apply from: "./learn.gradle"
 android {
     defaultConfig {
         applicationId AndroidSDK.applicationId

@@ -1,0 +1,28 @@
+task start {
+    println("learn website :https://juejin.cn/post/6844903879872610311")
+}
+task taskB(type: org.gradle.api.tasks.Exec) {
+    println("taskB")
+}
+task closure(dependsOn: taskB) {
+    doLast {}
+    println("closure ${thisObject.properties.toMapString()}")
+    println("closure ${owner.properties.toMapString()}")
+    println("closure ${delegate.properties.toMapString()}")
+    doFirst {
+
+    }
+}
+tasks.addRule("test") {
+        //所用的task 都会执行闭包的代码
+    String taskName ->
+        println "task::${taskName} "
+
+
+}
+closure.doFirst {}
+closure.onlyIf {
+    return false
+}
+//apply plugin: CheckImagePlugin
+apply plugin: "com.ggg.plugins"

@@ -9,7 +9,11 @@ android {
         multiDexEnabled true
         renderscriptTargetApi AndroidSDK.minSDK
         renderscriptSupportModeEnabled true
-
+        ndk {
+            abiFilters 'x86', 'x86_64', 'armeabi-v7a',
+                    'arm64-v8a'
+        }
+        flavorDimensions 'app'
     }
 
     buildTypes {
@@ -29,6 +33,16 @@ android {
         sourceCompatibility AndroidSDK.jdkVersion
         targetCompatibility AndroidSDK.jdkVersion
     }
+
+    productFlavors {
+        productMain {
+            dimension 'app'
+        }
+        productOther {
+            dimension 'app'
+        }
+    }
+
 }
 
 dependencies {
